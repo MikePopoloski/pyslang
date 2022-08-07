@@ -1,6 +1,6 @@
 # pyslang - Language bindings for slang, SystemVerilog parsing and compilation library
 
-![](https://github.com/MikePopoloski/pyslang/workflows/CI%20Build/badge.svg)
+[![build](https://github.com/MikePopoloski/pyslang/actions/workflows/build.yml/badge.svg)](https://github.com/MikePopoloski/pyslang/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/MikePopoloski/pyslang/blob/master/LICENSE)
 [![Join the chat at https://gitter.im/MikePopoloski/slang](https://badges.gitter.im/MikePopoloski/slang.svg)](https://gitter.im/MikePopoloski/slang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
