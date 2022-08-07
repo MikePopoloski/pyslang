@@ -8,7 +8,7 @@ def get_git_version():
     fmt = "{tag}+{commitcount}.{gitsha}"
 
     try:
-        git_version = check_output(command.split()).decode("utf-8").strip()
+        git_version = check_output(command.split(), cwd="slang").decode("utf-8").strip()
     except Exception:
         return None
 
