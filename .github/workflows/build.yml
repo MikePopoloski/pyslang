@@ -33,7 +33,7 @@ jobs:
         pip install pytest
 
     - name: Build and install
-      run: pip install --verbose pyslang/
+      run: pip install --verbose .
 
     - name: Test
-      run: pytest pyslang/
+      run: pytest

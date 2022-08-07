@@ -14,10 +14,6 @@ jobs:
   build_sdist:
     name: Build SDist
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: pyslang/
-
     steps:
     - uses: actions/checkout@v3
       with:
@@ -32,16 +28,12 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        path: pyslang/dist/*.tar.gz
+        path: dist/*.tar.gz
 
 
   build_wheels:
     name: Wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: pyslang/
-
     strategy:
       fail-fast: false
       matrix:
@@ -57,8 +49,6 @@ jobs:
       env:
         CIBW_ARCHS_MACOS: auto universal2
         MACOSX_DEPLOYMENT_TARGET: "10.15"
-      with:
-        package-dir: pyslang/
 
     - name: Verify clean directory
       run: git diff --exit-code
