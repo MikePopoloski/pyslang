@@ -1,0 +1,20 @@
+include LICENSE
+include README.md
+include MANIFEST.in
+include RELEASE-VERSION
+include pyproject.toml
+include setup.cfg
+include setup.py
+
+graft tests
+
+graft slang
+exclude slang/.git
+exclude slang/external/**/.git
+prune slang/tests
+prune slang/external/Catch2
+prune slang/external/fmt/test
+prune slang/external/fmt/doc
+prune slang/external/fmt/support
+prune slang/external/pybind11/docs
+prune slang/external/pybind11/tests
