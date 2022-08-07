@@ -15,6 +15,5 @@ prune slang/tests
 prune slang/external/Catch2
 prune slang/external/fmt/test
 prune slang/external/fmt/doc
-prune slang/external/fmt/support
 prune slang/external/pybind11/docs
 prune slang/external/pybind11/tests

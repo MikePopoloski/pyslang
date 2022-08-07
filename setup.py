@@ -54,15 +54,15 @@ def get_version():
 
 setup(
     version=get_version(),
-    packages=["pyslang"],
-    package_dir={"pyslang": "."},
-    cmake_install_dir=".",
+    packages=[""],
+    package_dir={"": "slang"},
+    cmake_source_dir="slang",
+    cmake_install_dir="slang",
     cmake_install_target="pyslang-install-pylib",
     cmake_args=[
         "-DSLANG_INCLUDE_TESTS=OFF",
         "-DSLANG_INCLUDE_TOOLS=OFF",
         "-DSLANG_INCLUDE_PYLIB=ON",
     ],
-    include_package_data=True,
     extras_require={"test": ["pytest"]},
 )
