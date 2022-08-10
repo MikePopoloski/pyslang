@@ -1,6 +1,7 @@
 # pyslang - Language bindings for slang, SystemVerilog parsing and compilation library
 
 [![build](https://github.com/MikePopoloski/pyslang/actions/workflows/build.yml/badge.svg)](https://github.com/MikePopoloski/pyslang/actions/workflows/build.yml)
+[![PyPI](https://img.shields.io/pypi/v/pyslang.svg)](https://pypi.org/project/pyslang/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/MikePopoloski/pyslang/blob/master/LICENSE)
 [![Join the chat at https://gitter.im/MikePopoloski/slang](https://badges.gitter.im/MikePopoloski/slang.svg)](https://gitter.im/MikePopoloski/slang?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -17,6 +18,12 @@ pip install pyslang
 or, to update your installed version to the latest release:
 ```
 pip install -U pyslang
+```
+or, to checkout and install a local build:
+```
+git clone https://github.com/MikePopoloski/pyslang.git
+cd pyslang
+pip install .
 ```
 
 ## Example usage
