@@ -23,6 +23,7 @@ or, to checkout and install a local build:
 ```
 git clone https://github.com/MikePopoloski/pyslang.git
 cd pyslang
+git submodule update --init --recursive
 pip install .
 ```
 
