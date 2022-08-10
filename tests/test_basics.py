@@ -1,3 +1,4 @@
+import pyslang
 from pyslang import *
 
 
@@ -34,7 +35,9 @@ endmodule
 
 
 def test_version():
-    assert VersionInfo.getMajor() == 2
+    assert pyslang.__version__ == "{}.{}.{}".format(
+        VersionInfo.getMajor(), VersionInfo.getMinor(), VersionInfo.getPatch()
+    )
 
 
 def test_sourcemanager():
