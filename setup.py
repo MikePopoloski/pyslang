@@ -5,8 +5,6 @@ from skbuild import setup
 
 def get_git_version():
     command = "git describe --tags --long --dirty"
-    fmt = "{tag}.{commitcount}"
-
     try:
         git_version = check_output(command.split(), cwd="slang").decode("utf-8").strip()
     except Exception:
@@ -17,16 +15,9 @@ def get_git_version():
 
     parts = git_version.split("-")
     assert len(parts) in (3, 4)
-    dirty = len(parts) == 4
-    tag, count, sha = parts[:3]
-    if count == "0" and not dirty:
-        version = tag
-    else:
-        version = fmt.format(tag=tag, commitcount=count)
-        if dirty:
-            version = version + ".dirty"
 
-    return version
+    tag, count = parts[:2]
+    return "{}.{}".format(tag, count)
 
 
 def get_version():
