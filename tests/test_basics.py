@@ -29,7 +29,7 @@ def test_bag():
 
 testFile = """
 module m(input i, output o);
-    assign o = (~i + 32'd1234);
+    assign #2 o = (~i + 32'd1234);
 endmodule
 """
 
@@ -78,9 +78,9 @@ def test_compilation():
     assert (
         ("\n" + report)
         == """
-source:3:14: warning: implicit conversion truncates from 32 to 1 bits [-Wwidth-trunc]
-    assign o = (~i + 32'd1234);
-             ^  ~~~~~~~~~~~~~
+source:3:17: warning: implicit conversion truncates from 32 to 1 bits [-Wwidth-trunc]
+    assign #2 o = (~i + 32'd1234);
+                ^  ~~~~~~~~~~~~~
 """
     )
 
@@ -102,3 +102,18 @@ endfunction
 
     assert session.eval("func(4, arr)").value == 2
     assert len(session.getDiagnostics()) == 0
+
+
+def test_symbol_inspection():
+    comp = Compilation()
+    comp.addSyntaxTree(SyntaxTree.fromText(testFile))
+
+    m = comp.getRoot().lookupName("m")
+    a = m.body[4]
+    assert a.kind == SymbolKind.ContinuousAssign
+    assert a.delay.expr.value == 2
+
+    t = a.assignment.right.operand.right.type
+    assert t.isPackedArray
+    assert t.bitWidth == 32
+    assert str(t) == "logic[31:0]"
