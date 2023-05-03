@@ -45,7 +45,7 @@ jobs:
         fetch-depth: 0
         submodules: recursive
 
-    - uses: pypa/cibuildwheel@v2.8.1
+    - uses: pypa/cibuildwheel@v2.12.3
       env:
         CIBW_ARCHS_MACOS: auto universal2
         MACOSX_DEPLOYMENT_TARGET: "10.15"
