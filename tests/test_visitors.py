@@ -1,7 +1,7 @@
 from pyslang import *
 
 
-def test_single_counting_of_statements():
+def test_ast_visitor_single_counting_of_statements():
     """
     Test the visitor interface in pyslang using a port of slang's
     tests/unittests/VisitorTests.cpp:"Test single counting of statements".
