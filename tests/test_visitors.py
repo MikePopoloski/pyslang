@@ -1,6 +1,30 @@
 from pyslang import *
 
 
+def test_syntax_node_visitor():
+    """
+    Test the SyntaxNode visitor by extracting the tokens of a SyntaxNode.
+    """
+
+    tree = SyntaxTree.fromText("always (*)")
+    tokens = []
+
+    def handle(obj):
+        if isinstance(obj, Token):
+            tokens.append(obj)
+
+    assert isinstance(tree.root, SyntaxNode)
+    tree.root.visit(handle)
+    token_kinds = [t.kind for t in tokens]
+    assert token_kinds == [
+        TokenKind.AlwaysKeyword,
+        TokenKind.OpenParenthesisStar,
+        TokenKind.StarCloseParenthesis,
+        TokenKind.Semicolon,
+        TokenKind.EndOfFile,
+    ]
+
+
 def test_timing_control_visitor():
     """
     Test the TimingControl visitor by extracting the sensitivit list
