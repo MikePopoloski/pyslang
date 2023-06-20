@@ -1,6 +1,58 @@
 from pyslang import *
 
 
+def test_timing_control_visitor():
+    """
+    Test the TimingControl visitor by extracting the sensitivit list
+    of a T-FF. The example module was taken from
+    https://www.chipverify.com/verilog/verilog-always-block
+    """
+
+    tree = SyntaxTree.fromText(
+        """
+        module tff (input  d,
+                    clk,
+                    rstn,
+                    output reg q);
+
+            always @ (posedge clk or negedge rstn) begin
+                if (!rstn)
+                    q <= 0;
+                else
+                    if (d)
+                        q <= ~q;
+                    else
+                        q <= q;
+            end
+        endmodule
+        """
+    )
+    c = Compilation()
+    c.addSyntaxTree(tree)
+    insts = c.getRoot().topInstances
+    assert len(insts) == 1
+    always_block = list(insts[0].body)[-1]
+    assert isinstance(always_block, ProceduralBlockSymbol)
+    timed = always_block.body
+    assert isinstance(timed, TimedStatement)
+    timing_control = timed.timing
+    assert isinstance(timing_control, TimingControl)
+
+    class SensitivityListExtractor:
+        def __init__(self):
+            self.sensitivity_vars = []
+
+        def __call__(self, obj):
+            if isinstance(obj, SignalEventControl):
+                assert isinstance(obj.expr, NamedValueExpression)
+                self.sensitivity_vars.append(obj.expr.getSymbolReference())
+
+    visitor = SensitivityListExtractor()
+    timing_control.visit(visitor)
+    sensitivity_var_names = [v.name for v in visitor.sensitivity_vars]
+    assert sensitivity_var_names == ["clk", "rstn"]
+
+
 def test_ast_visitor_single_counting_of_statements():
     """
     Test the visitor interface in pyslang using a port of slang's
