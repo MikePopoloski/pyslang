@@ -92,7 +92,7 @@ def test_scriptsession():
         """
 function int func(int i, integer arr[string]);
     case (i) inside
-        [5'd1:5'd2]: return 1;
+        [32'sd1:32'sd2]: return 1;
         arr: return 2;
     endcase
     return 3;
