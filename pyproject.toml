@@ -27,6 +27,9 @@ Repository = "https://github.com/MikePopoloski/pyslang"
 Issues = "https://github.com/MikePopoloski/slang/issues"
 Changelog = "https://github.com/MikePopoloski/slang/blob/master/CHANGELOG.md"
 
+[project.optional-dependencies]
+test = ["pytest"]
+
 [build-system]
 requires = [
     "pybind11",
