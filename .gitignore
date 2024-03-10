@@ -11,4 +11,3 @@ _skbuild/
 __pycache__/
 dist/
 wheelhouse/
-RELEASE-VERSION
