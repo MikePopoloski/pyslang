@@ -6,7 +6,7 @@ def test_syntax_node_visitor():
     Test the SyntaxNode visitor by extracting the tokens of a SyntaxNode.
     """
 
-    tree = SyntaxTree.fromText("always (*)")
+    tree = SyntaxTree.fromText("always @(*)")
     tokens = []
 
     def handle(obj):
@@ -18,10 +18,11 @@ def test_syntax_node_visitor():
     token_kinds = [t.kind for t in tokens]
     assert token_kinds == [
         TokenKind.AlwaysKeyword,
-        TokenKind.OpenParenthesisStar,
-        TokenKind.StarCloseParenthesis,
+        TokenKind.At,
+        TokenKind.OpenParenthesis,
+        TokenKind.Star,
+        TokenKind.CloseParenthesis,
         TokenKind.Semicolon,
-        TokenKind.EndOfFile,
     ]
 
 

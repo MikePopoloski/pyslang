@@ -78,9 +78,9 @@ def test_compilation():
     assert (
         ("\n" + report)
         == """
-source:3:17: warning: implicit conversion truncates from 32 to 1 bits [-Wwidth-trunc]
+source:3:20: warning: implicit conversion truncates from 32 to 1 bits [-Wwidth-trunc]
     assign #2 o = (~i + 32'd1234);
-                ^  ~~~~~~~~~~~~~
+                ~  ^~~~~~~~~~~~~
 """
     )
 
