@@ -24,6 +24,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         path: dist/*.tar.gz
+        name: artifact-sdist
 
   build_wheels:
     name: Wheels on ${{ matrix.os }}
@@ -47,6 +48,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         path: wheelhouse/*.whl
+        name: artifact-${{ matrix.os }}
 
   upload_test:
     name: Upload test
@@ -59,8 +61,9 @@ jobs:
         python-version: "3.x"
     - uses: actions/download-artifact@v4
       with:
-        name: artifact
+        pattern: artifact-*
         path: dist
+        merge-multiple: true
     - uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -79,8 +82,9 @@ jobs:
         python-version: "3.x"
     - uses: actions/download-artifact@v4
       with:
-        name: artifact
+        pattern: artifact-*
         path: dist
+        merge-multiple: true
     - uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
