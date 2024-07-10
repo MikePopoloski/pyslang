@@ -71,8 +71,9 @@ def test_compilation():
     comp.addSyntaxTree(tree)
 
     diags = comp.getAllDiagnostics()
-    assert len(diags) == 1
+    assert len(diags) == 2
     assert diags[0].code == Diags.WidthTruncate
+    assert diags[1].code == Diags.ArithOpMismatch
 
     report = DiagnosticEngine.reportAll(comp.sourceManager, diags)
     assert (
@@ -81,6 +82,9 @@ def test_compilation():
 source:3:20: warning: implicit conversion truncates from 32 to 1 bits [-Wwidth-trunc]
     assign #2 o = (~i + 32'd1234);
                 ~  ^~~~~~~~~~~~~
+source:3:23: warning: arithmetic between operands of different types ('logic' and 'bit[31:0]') [-Warith-op-mismatch]
+    assign #2 o = (~i + 32'd1234);
+                   ~~ ^ ~~~~~~~~
 """
     )
 
