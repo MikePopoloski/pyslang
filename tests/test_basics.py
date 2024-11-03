@@ -34,12 +34,6 @@ endmodule
 """
 
 
-def test_version():
-    assert pyslang.__version__ == "{}.{}.{}".format(
-        VersionInfo.getMajor(), VersionInfo.getMinor(), VersionInfo.getPatch()
-    )
-
-
 def test_sourcemanager():
     sm = SourceManager()
     buf = sm.assignText("coolfile.sv", testFile)

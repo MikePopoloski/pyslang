@@ -1,6 +1,6 @@
 [project]
 name = "pyslang"
-dynamic = ["version"]
+version = "7.0.1"
 description = "Python bindings for slang, a library for compiling SystemVerilog"
 readme = {file = "README.md", content-type = "text/markdown"}
 authors = [{name = "Mike Popoloski"}]
@@ -41,8 +41,6 @@ build-backend = "scikit_build_core.build"
 build-dir = "build/{wheel_tag}"
 cmake.source-dir = "slang"
 install.components = ["pylib"]
-metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-sdist.include = ["_version.py"]
 sdist.exclude = [
     ".github",
     "slang/build",
@@ -55,10 +53,6 @@ sdist.exclude = [
 SLANG_INCLUDE_TESTS = "OFF"
 SLANG_INCLUDE_TOOLS = "OFF"
 SLANG_INCLUDE_PYLIB = "ON"
-
-[tool.setuptools_scm]
-root = "slang"
-write_to = "_version.py"
 
 [tool.cibuildwheel]
 archs = ["auto64"]
