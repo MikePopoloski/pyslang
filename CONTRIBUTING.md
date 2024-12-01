@@ -8,6 +8,10 @@ The bulk of functional code is in the [`slang` repository](https://github.com/Mi
 
 Python bindings are built using [pybind11](https://github.com/pybind/pybind11).
 
+## Documentation
+
+All documentation is contained in the `docs` directory of the `slang` repository.
+
 ## Building and Testing
 
 TODO: Write step-by-step instructions to build and test the bindings.
