@@ -85,7 +85,7 @@ source:3:23: warning: arithmetic between operands of different types ('logic' an
 
 def test_scriptsession():
     session = ScriptSession()
-    session.eval('integer arr[string] = \'{"Hello":4, "World":8, default:-1};')
+    session.eval("""integer arr[string] = '{"Hello":4, "World":8, default:-1};""")
     session.eval(
         """
 function int func(int i, integer arr[string]);
@@ -99,7 +99,10 @@ endfunction
     )
 
     assert session.eval("func(4, arr)").value == 2
-    assert len(session.getDiagnostics()) == 0
+
+    # Missing 'default' in case statement. Check that the diagnostic is reported.
+    assert len(session.getDiagnostics()) == 1
+    assert session.getDiagnostics()[0].code == Diags.CaseDefault
 
 
 def test_symbol_inspection():
