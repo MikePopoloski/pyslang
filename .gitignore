@@ -1,6 +1,6 @@
 .vs/
-.vscode/
 .venv/
+venv/
 .pytest_cache/
 build/
 tests/regression/
