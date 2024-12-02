@@ -1,4 +1,4 @@
-# Contibuting to `pyslang`
+# Contributing to `pyslang`
 
 Pyslang, the Python bindings for the [slang project](https://github.com/MikePopoloski/slang), are built, tested, and packaged with code in this repository.
 
@@ -14,4 +14,22 @@ All documentation is contained in the `docs` directory of the `slang` repository
 
 ## Building and Testing
 
-TODO: Write step-by-step instructions to build and test the bindings.
+1. Clone the `pyslang` repository (https://github.com/MikePopoloski/pyslang)
+2. Clone the `slang` submodule:
+
+```bash
+git submodule update --init --recursive
+```
+
+3. Optionally, create a virtual environment and activate it.
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+4. Install `pyslang` as a Python package (including building the C++ `slang` library with bindings, from the submodule):
+
+```bash
+pip install .
+```
