@@ -22,7 +22,7 @@ jobs:
         fetch-depth: 0
         submodules: recursive
     - uses: maxim-lobanov/setup-xcode@v1
-      if: matrix.os == 'macos-latest'
+      if: matrix.platform == 'macos-latest'
       with:
         xcode-version: 'latest'
     - uses: actions/setup-python@v5
