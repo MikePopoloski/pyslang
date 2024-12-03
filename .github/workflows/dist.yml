@@ -38,6 +38,10 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
+    - uses: maxim-lobanov/setup-xcode@v1
+      if: matrix.os == 'macos-latest'
+      with:
+        xcode-version: 'latest'
     - uses: pypa/cibuildwheel@v2.21.3
       env:
         CIBW_ARCHS_MACOS: auto universal2
