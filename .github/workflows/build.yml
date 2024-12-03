@@ -21,6 +21,10 @@ jobs:
       with:
         fetch-depth: 0
         submodules: recursive
+    - uses: maxim-lobanov/setup-xcode@v1
+      if: matrix.os == 'macos-latest'
+      with:
+        xcode-version: 'latest'
     - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
