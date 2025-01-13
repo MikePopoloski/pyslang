@@ -29,6 +29,7 @@ Changelog = "https://github.com/MikePopoloski/slang/blob/master/CHANGELOG.md"
 
 [project.optional-dependencies]
 test = ["pytest"]
+dev = ["pytest", "build", "twine", "mypy", "pybind11-stubgen"]
 
 [build-system]
 requires = [

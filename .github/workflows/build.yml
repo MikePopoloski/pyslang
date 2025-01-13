@@ -31,8 +31,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
     - name: Build and install
-      run: pip install --verbose .
+      run: pip install --verbose '.[dev]'
     - name: Test
       run: pytest
+    - name: Check that stubs are up-to-date
+      run: |
+        ./generate_stubs.sh
+        git diff --exit-code || (echo "Stubs are out of date. Please run the ./generate_stubs.sh script." && exit 1)
